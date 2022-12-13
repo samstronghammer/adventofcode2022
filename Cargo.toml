@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 eval = "0.4.3"
 pathfinding = "4.0.0"
+substring = "1.4.5"
