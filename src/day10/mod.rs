@@ -1,8 +1,7 @@
-use std::fs;
+use crate::util::advent;
 
 pub fn run() {
-  let contents =
-    fs::read_to_string("src/day10/in.txt").expect("Should have been able to read the file");
+  let contents = advent::parse_input(10);
   let lines: Vec<&str> = contents.split("\n").collect();
   let mut x_values: Vec<i32> = [].to_vec();
   let mut x = 1;
