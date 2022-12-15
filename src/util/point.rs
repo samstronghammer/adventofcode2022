@@ -25,6 +25,10 @@ impl Point {
     ]
     .to_vec();
   }
+
+  pub fn manhattan_distance(self, other: Point) -> i32 {
+    return (self.x - other.x).abs() + (self.y - other.y).abs();
+  }
 }
 
 impl ops::Add<Point> for Point {
