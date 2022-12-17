@@ -17,15 +17,15 @@ fn find_beacon(sensor_beacon_info: &Vec<(Point, i32)>) -> Point {
     if curr.y > 4000000 {
       panic!("Didn't find beacon")
     }
-    let intersecting_beacon_option = sensor_beacon_info
+    let intersecting_sensor_option = sensor_beacon_info
       .iter()
       .find(|info| info.0.manhattan_distance(curr) <= info.1);
-    if intersecting_beacon_option.is_none() {
+    if intersecting_sensor_option.is_none() {
       break;
     }
-    let intersecting_beacon = intersecting_beacon_option.unwrap();
-    let delta_y = (intersecting_beacon.0.y - curr.y).abs();
-    let next_x = intersecting_beacon.0.x + intersecting_beacon.1 - delta_y + 1;
+    let intersecting_sensor = intersecting_sensor_option.unwrap();
+    let delta_y = (intersecting_sensor.0.y - curr.y).abs();
+    let next_x = intersecting_sensor.0.x + intersecting_sensor.1 - delta_y + 1;
     if next_x > 4000000 {
       curr = Point::new(0, curr.y + 1);
     } else {
