@@ -18,15 +18,11 @@ impl Circle {
     let mod_value: i64 = i64::try_from(self.size()).unwrap() - 1;
     for _ in 0..num_times {
       for id in 0..(self.size()) {
-        let number = self.nodes.get(&id).unwrap().value;
-        if number == 0 {
-          continue;
-        }
-        let move_count = ((number % mod_value) + mod_value) % mod_value;
+        let node = self.nodes.get(&id).unwrap();
+        let move_count = ((node.value % mod_value) + mod_value) % mod_value;
         if move_count == 0 {
           continue;
         }
-        let node = self.nodes.get(&id).unwrap();
         let old_prev_id = node.prev.unwrap();
         let old_next_id = node.next.unwrap();
         let mut prev_id = node.id;
