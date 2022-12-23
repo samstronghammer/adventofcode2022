@@ -26,6 +26,20 @@ impl Point {
     .to_vec();
   }
 
+  pub fn adj8(self) -> Vec<Point> {
+    return [
+      self + Point::UP + Point::LEFT,
+      self + Point::UP,
+      self + Point::UP + Point::RIGHT,
+      self + Point::LEFT,
+      self + Point::RIGHT,
+      self + Point::DOWN + Point::LEFT,
+      self + Point::DOWN,
+      self + Point::DOWN + Point::RIGHT,
+    ]
+    .to_vec();
+  }
+
   pub fn manhattan_distance(self, other: Point) -> i32 {
     return (self.x - other.x).abs() + (self.y - other.y).abs();
   }
@@ -70,15 +84,15 @@ pub struct Point3 {
 
 impl Point3 {
   pub fn new(x: i32, y: i32, z: i32) -> Self {
-    Point3 { x: x, y: y, z: z}
+    Point3 { x: x, y: y, z: z }
   }
 
-  pub const X_UP: Point3 = Point3 { x: 1, y: 0, z: 0};
-  pub const X_DOWN: Point3 = Point3 { x: -1, y: 0, z: 0};
-  pub const Y_UP: Point3 = Point3 { x: 0, y: 1, z: 0};
-  pub const Y_DOWN: Point3 = Point3 { x: 0, y: -1, z: 0};
-  pub const Z_UP: Point3 = Point3 { x: 0, y: 0, z: 1};
-  pub const Z_DOWN: Point3 = Point3 { x: 0, y: 0, z: -1};
+  pub const X_UP: Point3 = Point3 { x: 1, y: 0, z: 0 };
+  pub const X_DOWN: Point3 = Point3 { x: -1, y: 0, z: 0 };
+  pub const Y_UP: Point3 = Point3 { x: 0, y: 1, z: 0 };
+  pub const Y_DOWN: Point3 = Point3 { x: 0, y: -1, z: 0 };
+  pub const Z_UP: Point3 = Point3 { x: 0, y: 0, z: 1 };
+  pub const Z_DOWN: Point3 = Point3 { x: 0, y: 0, z: -1 };
 
   pub fn adj6(self) -> Vec<Point3> {
     return [
@@ -125,7 +139,7 @@ impl ops::Div<Point3> for Point3 {
     return Point3 {
       x: self.x / rhs.x,
       y: self.y / rhs.y,
-      z: self.z / rhs.z
+      z: self.z / rhs.z,
     };
   }
 }
